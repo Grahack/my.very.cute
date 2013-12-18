@@ -1,22 +1,22 @@
 <?php
 // User defined constants:
-$BASE = 'http://127.0.0.1/my.very.cute/';
-$DEFAULT_METHOD = 'index';
-$DEBUG = true;
+define('BASE', 'http://127.0.0.1/my.very.cute/');
+define('DEFAULT_METHOD', 'index');
+define('DEBUG', true);
 
 // Defs:
-function dbg($var) {global $DEBUG, $$var; if ($DEBUG) echo ((isset($$var) ? ($var.': '.(is_array($$var)?print_r($$var, true):$$var)) : $var)).'<br />';}
+function dbg($var) {global $$var; if (DEBUG) echo ((isset($$var) ? ($var.': '.(is_array($$var)?print_r($$var, true):$$var)) : $var)).'<br />';}
 function req_URL() {return "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";}
 require('controller.php');
 
 // Parse the request in $method and $args.
 $req_URL = req_URL();
-if ($req_URL == $BASE) {
+if ($req_URL == BASE) {
     $path = '';
 } else {
-    $path = substr($req_URL, strlen($BASE.'index.php/'));
+    $path = substr($req_URL, strlen(BASE.'index.php/'));
 }
-if ($path == '') $path = $DEFAULT_METHOD;
+if ($path == '') $path = DEFAULT_METHOD;
 dbg('req_URL');
 dbg('path');
 $expl = explode('/', rtrim($path, '/'), 2);
