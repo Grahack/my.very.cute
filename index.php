@@ -7,6 +7,11 @@ define('DEBUG', true);
 // Defs:
 function dbg($var) {global $$var; if (DEBUG) echo ((isset($$var) ? ($var.': '.(is_array($$var)?print_r($$var, true):$$var)) : $var)).'<br />';}
 function req_URL() {return "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";}
+function view($file, $vars = array(), $capture = false) {
+        if ($capture) ob_start();
+        if (file_exists($file)) include($file);
+        if ($capture) return ob_get_clean();
+}
 require('controller.php');
 
 // Parse the request in $method and $args.
