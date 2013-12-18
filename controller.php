@@ -1,4 +1,10 @@
 <?php
+dbg("Controller loaded.");
+
+// Include model files.
+foreach (glob("m_*.php") as $filename) include $filename;
+
+// OO controller.
 class Controller {
     public function index() {
         dbg("accueil");
