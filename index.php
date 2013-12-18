@@ -19,7 +19,7 @@ if ($req_URL == $BASE) {
 if ($path == '') $path = $DEFAULT_METHOD;
 dbg('req_URL');
 dbg('path');
-$expl = explode('/', $path, 2);
+$expl = explode('/', rtrim($path, '/'), 2);
 dbg('expl');
 $method = $expl[0];
 if (count($expl) == 1) {
@@ -30,8 +30,8 @@ if (count($expl) == 1) {
 dbg('method');
 dbg('args');
 $controller = new Controller();
-if (method_exists ($controller , $method)) {
-    $controller->$method();
+if (method_exists($controller, $method)) {
+    call_user_func_array (array($controller, $method), $args);
 } else {
     header("HTTP/1.0 404 Not Found");
     dbg('404!');
