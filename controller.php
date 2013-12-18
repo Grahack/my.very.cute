@@ -7,9 +7,9 @@ foreach (glob("m_*.php") as $filename) include $filename;
 // OO controller.
 class Controller {
     public function index() {
-        dbg("accueil");
+        dbg("Home page");
     }
-    public function autre_methode($un_arg = "valeur par defaut") {
-        dbg("autre methode, ayant pour arg: ".$un_arg);
+    public function autre_methode($an_arg = "a great default value") {
+        dbg("another method, having an arg: ".$an_arg);
     }
 }
