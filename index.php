@@ -12,9 +12,9 @@ define('DEBUG', true);
 // Defs:
 function dbg($var) {global $$var; if (DEBUG) echo ((isset($$var) ? ($var.': '.(is_array($$var)?print_r($$var, true):$$var)) : $var)).'<br />';}
 function req_URL() {return "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";}
-function view($file, $vars = array(), $capture = false) {
+function view($view_file, $vars = array(), $capture = false) {
         if ($capture) ob_start();
-        if (file_exists($file)) include($file);
+        if (file_exists($view_file)) include($view_file);
         if ($capture) return ob_get_clean();
 }
 require('controller.php');
