@@ -15,6 +15,7 @@ function req_URL() {return "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";}
 function view($view_file, $vars = array(), $capture = false) {
         if ($capture) ob_start();
         if (file_exists($view_file)) include($view_file);
+        else echo '<pre>'.print_r($vars, true).'</pre>';
         if ($capture) return ob_get_clean();
 }
 require('controller.php');
