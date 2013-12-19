@@ -1,4 +1,9 @@
 <?php
+/* Minimalistic PHP MVC OOP WEB framework.
+ *
+ * Warning: do not use in production, pedagogical project only.
+ */
+
 // User defined constants:
 define('BASE', 'http://127.0.0.1/my.very.cute/');
 define('DEFAULT_METHOD', 'index');
