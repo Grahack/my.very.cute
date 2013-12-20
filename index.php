@@ -22,6 +22,7 @@ require('controller.php');
 
 // Parse the request in $method and $args.
 $req_URL = req_URL();
+if (strpos($req_URL, BASE, 0) !== 0) exit("BASE not config'ed!");
 if ($req_URL == BASE) {
     $path = '';
 } else {
