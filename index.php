@@ -11,7 +11,6 @@ define('DEBUG', true);
 
 // Defs:
 function dbg($var) {global $$var; if (DEBUG) echo ((isset($$var) ? ($var.': '.(is_array($$var)?print_r($$var, true):$$var)) : $var)).'<br />';}
-function req_URL() {return "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";}
 function view($view_file, $vars = array(), $capture = false) {
     if ($capture) ob_start();
     if (file_exists($view_file)) include($view_file);
@@ -21,7 +20,7 @@ function view($view_file, $vars = array(), $capture = false) {
 require('controller.php');
 
 // Parse the request in $method and $args.
-$req_URL = req_URL();
+$req_URL = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
 if (strpos($req_URL, BASE, 0) !== 0) exit("BASE not config'ed!");
 if ($req_URL == BASE) {
     $path = '';
