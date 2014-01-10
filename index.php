@@ -21,6 +21,7 @@ require('controller.php');
 
 // Parse the request in $method and $args.
 $req_URL = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
+dbg('req_URL');
 if (strpos($req_URL, BASE, 0) !== 0) exit("BASE not config'ed!");
 if ($req_URL == BASE) {
     $path = '';
@@ -28,7 +29,6 @@ if ($req_URL == BASE) {
     $path = substr($req_URL, strlen(BASE.'index.php/'));
 }
 if ($path == '') $path = DEFAULT_METHOD;
-dbg('req_URL');
 dbg('path');
 $expl = explode('/', rtrim($path, '/'), 2);
 dbg('expl');
