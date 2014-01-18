@@ -14,7 +14,7 @@ function dbg($var) {global $$var; if (DEBUG) echo ((isset($$var) ? ($var.': '.(i
 function view($view_file, $vars = array(), $capture = false) {
     if ($capture) ob_start();
     if (file_exists($view_file)) include($view_file);
-    else echo '<pre>'.print_r($vars, true).'</pre>';
+    else echo 'View file not found!<br /><br /><pre>'.print_r($vars, true).'</pre>';
     if ($capture) return ob_get_clean();
 }
 require('controller.php');
